@@ -15,27 +15,22 @@ namespace blue_patcher
         // 1.6.5 FF 6A 00 6A 00 52 2B C1 50 8B 85 C8 FA FF FF 51 50 C6 85 CF FA FF FF 01 FF 15 00 80 15 10 8B 8D C8 FA FF FF 51 8B F0 FF 15 1C 80 15 10 85 F6 0F 85
         //       FF 6A 00 6A 00 52 2B C1 50 8B 85 C8 FA FF FF 51 50 C6 85 CF FA FF FF 01 FF 15 44 F0 15 10 8B 8D C8 FA FF FF 51 8B F0 FF 15 1C F0 15 10 85 F6 0F 85
         private static readonly byte[] Bytes = new byte[]
-                                           {
-                                               0x6a, 0x00, 0x6a, 0x00, 0x52, 0x2b, 0xc1, 0x50, 0x8b, 0x85, 0xc8,
-                                               0xfa,
-                                               0xff, 0xff, 0x51, 0x50, 0xc6, 0x85, 0xcf, 0xfa, 0xff, 0xff, 0x01, 0xff,
-                                               0x15,
-                                               0x44, 0xF0, 0x15, 0x10, 0x8b, 0x8d, 0xc8, 0xfa, 0xff, 0xff, 0x51, 0x8b,
-                                               0xf0,
-                                               0xff, 0x15, 0x1C, 0xF0, 0x15, 0x10, 0x85, 0xf6, 0x0f, 0x85
-                                           };
+            {
+                0x8B,0xFF,0xFF,0x8B,0xFF,0xFF,0x8B,0xFF,0xFF,0x6A,
+                0xFF,0x6A,0xFF,0x52,0x2B,0xC1,0x50,0x8B,0xFF,0xFF,
+                0x51,0x50,0xB3,0x01,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                0x8B,0xFF,0xFF,0x51,0x8B,0xFF,0xFF,0xFF,0xFF,0xFF,
+                0xFF,0xFF,0x85,0xFF,0x0F,0x85
+            };
 
         private static readonly bool[] Mask = new bool[]
-                                          {
-                                              true, true, true, false, true, true, false, false, true, true, false
-                                              ,
-                                              false, true, true, true, true, true, true, true, false, false, false,
-                                              false,
-                                              true, true, true, true, false, false, false, false, true, true, true, true
-                                              ,
-                                              false, false, true, true, true, false, false, false, false, true, true,
-                                              true, true
-                                          };
+            {
+                true,false,false,true,false,false,true,false,false,true,
+                false,true,false,true,true,true,true,true,false,false,
+                true,true,true,true,false,false,false,false,false,false,
+                true,false,false,true,true,false,false,false,false,false,
+                false,false,true,false,true,true
+            };
         // nop, jmp
         private static readonly byte[] PatchBytes = new byte[]{0x90, 0xE9};
 
